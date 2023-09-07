@@ -1,0 +1,24 @@
+$colors : (
+"blue": #0075ff, 
+"blue-transparent": #0077ff6b,
+"blue-alt": #0d69d5,
+"orange": #f59e0b,
+"orange-transparent": #f59f0b6a,
+"green": #22c55e,
+"green-transparent": #22c55e6a,
+"red": #f44336,
+"red-transparent": #f443366a,
+"grey": #888,
+);
+
+$positions: ("absolute","relative","fixed");
+
+$displays : ("none","block","inline","inline-block","flex","grid");
+
+$flexJustify :("start","center","end","space-between","space-around","space-evenly");
+
+$flexAlign :("start","center","end");
+
+$flexDirection :("row","row-reverse","column","column-reverse");
+
+$directions : ("left","center","right")

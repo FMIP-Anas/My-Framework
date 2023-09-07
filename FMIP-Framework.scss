@@ -1,0 +1,439 @@
+/*---The Global Rules---*/
+
+* {
+  margin: 0;
+  box-sizing: 0;
+}
+
+@import "./includes/mixins";
+@import "./includes/variables";
+
+/* Container */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  @include breakpoint(mobile){
+    max-width: 540px;
+  }
+  @include breakpoint(small){
+    max-width: 720px;
+  }
+  @include breakpoint(medium){
+    max-width: 960px;
+  }
+  @include breakpoint(large){
+    max-width: 1140px;
+  }
+  @include breakpoint(print){
+      width: 992px !important;
+  }}
+
+/*---The Hidden And Visible Classes Classes---*/
+
+/*Hidden*/
+  %hidden
+  {
+      display: block;
+  }   
+  .hidden-xs{
+    @extend %hidden;
+    @include breakpoint(mobile){
+      display: none !important;
+    }
+  }
+  .hidden-s{
+    @extend %hidden;
+    @include breakpoint(small){
+      display: none !important;
+    }
+  }
+  .hidden-m{
+    @extend %hidden;
+    @include breakpoint(medium){
+      display: none !important;
+    }
+  }
+  .hidden-l{
+    @extend %hidden;
+    @include breakpoint(large){
+      display: none !important;
+    }
+  }
+
+  /*Visible*/
+  %visible
+  {
+      display: none;
+  }   
+  .visible-xs{
+    @extend %visible;
+    @include breakpoint(mobile){
+      display: block !important;
+    }
+  }
+  .visible-s{
+    @extend %visible;
+    @include breakpoint(small){
+      display: block !important;
+    }
+  }
+  .visible-m{
+    @extend %visible;
+    @include breakpoint(medium){
+      display: block !important;
+    }
+  }
+  .visible-l{
+    @extend %visible;
+    @include breakpoint(large){
+      display: block !important;
+    }
+  }
+/*---The Color And Background-Color Classes---*/
+@each $class , $color in $colors {
+    .bg-#{$class}{
+        background-color: $color;
+    }
+    .c-#{$class}{
+        color: $color;
+    }
+} 
+
+/*---The Clearfix And Float Classes---*/
+.clearfix
+{
+    clear: both;
+}
+.float-l
+{
+    float: left;
+}
+.float-r
+{
+    float: right;
+}
+
+/*---The Width And Height Classes---*/
+@for $i from 1 through 10{
+  .h-#{$i/2 *100 }{
+    height: #{$i/2 * 100}px;
+  }
+  .w-#{$i * 100}{
+    width: #{$i * 100}px;
+  }
+}
+.h-fit{
+  height: fit-content;
+}
+.w-fit{
+  width: fit-content;
+}
+.h-full{
+  height: 100%;
+}
+.w-full{
+  width: 100%;
+}
+
+/*---The Text And Fonts Classes---*/
+@each $dir in $directions{
+  .text-#{$dir}{
+    text-align: #{$dir};
+  }
+}
+.text-center-mob{
+  @include breakpoint(mobile){
+    text-align: center;
+  }
+}
+@for $i from 0 to 5{
+  .fs-#{($i*2) + 10}{
+    font-size: #{($i*2) + 10}px;
+  }
+}
+@for $i from 2 through 10{
+  .fs-#{$i * 10}{
+    font-size: #{$i * 10}px;
+  }
+}
+.fw-bold{
+  font-weight: bold;
+}
+.fw-normal{
+  font-weight: normal;
+}
+.fw-light{
+  font-weight: lighter;
+}
+.h1{
+  font-size: 2em;
+}
+.h2{
+  font-size: 1.5em;
+}
+.res-paragraph{
+  @include breakpoint(s-mobile){
+    font-size: 10px;
+  }
+  @include breakpoint(mobile){
+    font-size: 14px;
+  }
+  @include breakpoint(small){
+    font-size: 18px;
+  }
+  @include breakpoint(medium){
+    font-size: 22px;
+  }
+  @include breakpoint(large){
+    font-size: 24px;
+  }
+}
+/*---The Border Color Classes---*/
+@each $class , $color in $colors {
+      .border-#{$class}{
+        border-color: #{$color};
+      }
+      .border-top-#{$class}{
+        border-top-color: #{$color} !important;
+      }
+      .border-right-#{$class}{
+        border-right-color: #{$color} !important;
+      }
+      .border-bottom-#{$class}{
+        border-bottom-color: #{$color} !important;
+      }
+      .border-left-#{$class}{
+        border-left-color: #{$color} !important;
+      }
+} 
+
+
+/*---The Border Width Classes---*/
+@for $i from 1 through 10 {
+  .border-#{$i}{
+    border-width: #{$i}px solid;
+  }
+  .border-top-#{$i}{
+    border-top-width: #{$i}px solid !important;
+  }
+  .border-right-#{$i}{
+    border-right-width: #{$i}px solid !important;
+  }
+  .border-bottom-#{$i}{
+    border-bottom-width: #{$i}px solid !important;
+  }
+  .border-left-#{$i}{
+    border-left-width: #{$i}px solid !important;
+  }
+}
+
+/*---The Border Radius Classes---*/
+.thumbnail
+{
+  border: 5px #ccc solid;
+  border-radius: 40%;
+}
+.circle{
+  border-radius: 50%;
+}
+@for $i from 1 through 10{
+  .rad-#{$i * 5}{
+    border-radius: #{$i * 5};
+  }
+}
+/*---The Padding Classes---*/
+@for $i from 0 through 12 {
+    .p-#{$i *5}{
+      padding: #{$i * 5}px;
+    }
+    .pt-#{$i *5}{
+      padding-top: #{$i * 5}px !important;
+    }
+    .pr-#{$i *5}{
+      padding-right: #{$i * 5}px !important;
+    }
+    .pb-#{$i *5}{
+      padding-bottom: #{$i * 5}px !important;
+    }
+    .pl-#{$i *5}{
+      padding-left: #{$i * 5}px !important;
+    }
+}
+
+
+/*---The Margin Classes---*/
+
+.m-auto{
+  margin: auto;
+}
+@for $i from 0 through 12 {
+  .m-#{$i *5}{
+    margin: #{$i * 5}px;
+  }
+  .mt-#{$i *5}{
+    margin-top: #{$i * 5}px !important;
+  }
+  .mr-#{$i *5}{
+    margin-right: #{$i * 5}px !important;
+  }
+  .mb-#{$i *5}{
+    margin-bottom: #{$i * 5}px !important;
+  }
+  .ml-#{$i *5}{
+    margin-left: #{$i * 5}px !important;
+  }
+}
+
+
+
+/*---Start The Position Classes*/
+@each $pos in $positions{
+  .position-#{$pos}{
+    position: #{$pos};
+  }
+}
+.center-X{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.center-Y{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.center-X-Y{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/*---Start The Display Classes*/
+@each $dis in $displays{
+  .position-#{$dis}{
+    display: #{$dis};
+  }
+}
+
+/*---Start The Flex Classes*/
+.flex-wrap{
+  flex-wrap: wrap;
+}
+.flex-wrap-reserve{
+  flex-wrap: wrap-reverse;
+}
+
+@each $val in $flexJustify{
+  .justify-#{$val}{
+    justify-content: #{$val};
+    justify-items: #{$val};
+  }
+}
+
+@each $val in $flexAlign{
+  .align-#{$val}{
+    align-content: #{$val};
+    align-items: #{$val};
+  }
+}
+
+@each $val in $flexDirection{
+  .direction-#{$val}{
+    flex-direction: #{$val};
+  }
+}
+
+/*---The Child Flex Classes---*/
+@each $val in $flexAlign{
+  .self-align-#{$val}{
+    align-self: #{$val};  
+  }
+}
+
+@for $i from 1 through 5{
+  .flex-#{$i}
+  {
+    flex: #{$i};
+  }
+}
+.flex-half
+{
+    flex-basis: 50%;
+}
+
+.flex-full-mobile{
+  @include breakpoint(mobile){
+    flex-basis: 100%;
+  }
+}
+
+/*---Start The Gap Classes*/
+@for $i from 1 to 5{
+  .gap-#{$i}{
+    gap: #{$i}px;
+  }
+}
+@for $i from 1 to 10{
+  .gap-#{$i *5}{
+    gap: #{$i * 5}px;
+  }
+}
+/*---Start The Grid Classes*/
+@for $i from 1 through 14{
+  .grid-col-#{$i * 50}
+  {
+    grid-template-columns: repeat(auto-fill , minmax(#{$i * 50}px , 1fr));
+  }
+}
+@for $i from 1 through 12{
+  .grid-col-#{$i}-fr
+  {
+    -ms-grid-columns: (1fr)[auto-fill];
+      grid-template-columns: repeat(#{$i} , 1fr);
+  }
+}
+
+/*---Start Normalizing And Making Some Elements Responsive And Random Classes (Pointer,Ul,a(href),input,textarea,img,table)*/
+
+/*Responsive Table*/
+.res-table
+{
+    overflow-x: auto;
+}
+/* Responsive Image */
+.res-image
+{
+    width: 100%;
+    height: 100%;
+}
+/* non-styled-list */
+.non-styled-list
+{
+    padding: 0px;
+    list-style: none;
+}
+/* Normal Input*/
+%no-outline{
+  outline: none;
+}
+.normal-textarea
+{
+  @extend %no-outline;
+  resize: none;
+}
+.normal-input{
+  @extend %no-outline;
+}
+
+/*Links And The Pointer*/
+.normal-link
+{
+    text-decoration: none;
+}
+.pointer{
+    cursor: pointer;
+}
